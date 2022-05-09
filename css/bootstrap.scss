@@ -1,0 +1,30 @@
+// DENNE FIL ER KUN TIL BOOTSTRAP RETTELSER
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+
+:root {
+  --ikonercta: #5099F4;
+  --tekstfarve: #3b3b3b;
+}
+:root{
+  --overskrift-font: 'Red Hat Display',serif;
+  --tekst-font: 'Poppins',serif;
+
+}
+
+//Tilføj eller ret farver i Bootstrap. Herunder er primary blot sat til den normale primary
+$custom-colors: (
+  "primær": #5099, //Retter primary
+  "sekundær": #0000, //Tilføjer minFarve
+
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
+$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
+$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
+
+@import "../node_modules/bootstrap/scss/bootstrap";
